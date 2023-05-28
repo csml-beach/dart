@@ -32,8 +32,8 @@ jobs:
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
     - name: Test 
       run: |
-        python dart.py
         ls
+        python dart.py
         
     - name: Pull request artifacts
       uses: gavv/pull-request-artifacts@v1.0.0
