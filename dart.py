@@ -109,17 +109,19 @@ def find_optimal_throw_angles():
     in x and y directions
     for a throw such that
     the dart lands close to origin (0,0)
-    '''
-    
-    angle_x = 0 # degrees
-    angle_y = 0  # degrees
 
-    return angle_x, angle_y
+
+    '''
+
+    theta_x = 0
+    theta_y = 0
+    
+    return theta_x, theta_y
 
 if __name__ == "__main__":
 
     theta_x, theta_y = find_optimal_throw_angles()
 
     # Dont change the following lines:
-    find_optimal_throw_angles
+    theta_x, theta_y = find_optimal_throw_angles()
     plot_hits_on_dartboard(angle_x = theta_x, angle_y=theta_y)
