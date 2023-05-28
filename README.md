@@ -6,7 +6,7 @@ This guide provides a brief overview of the steps to share your solution for the
 
 1. Clone the repository:
 
-```git clone ```
+```git clone https://github.com/elswit/dart.git ```
 
 
 2. Make changes:
