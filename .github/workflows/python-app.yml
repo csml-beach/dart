@@ -33,6 +33,7 @@ jobs:
     - name: Test 
       run: |
         python dart.py
+        ls
         
     - name: Pull request artifacts
       uses: gavv/pull-request-artifacts@v1.0.0
