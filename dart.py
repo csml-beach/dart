@@ -1,10 +1,8 @@
 
 import math
-from matplotlib.collections import PatchCollection
+import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.patches import Wedge
-from mpl_toolkits.mplot3d import Axes3D
-import numpy as np
 
 
 def plot_dartboard(x,y):
@@ -27,16 +25,22 @@ def plot_dartboard(x,y):
     plt.axis('scaled')
     plt.gca().set_facecolor("grey")
 
-    # Display the plot
-    # lsplt.show()
-
-
 
 def simulate_3d_dart_throw(angle_x, angle_y,
                            initial_position = [0,0,0],
                            initial_velocity = 15.0,
                            time_step = 0.01,
                            plot = False):
+    '''
+    This function solved the trajectory of the dart. 
+    Use the optional inputs: angle_x and angle_y
+    as scalar and not arrays. You can turn the plot 
+    flag to True to show where a random throw 
+    with the input angles lands. 
+
+    the function returns the position of the dart 
+    when it (approximately) reaches the board. 
+    '''
     # Convert the angles from degrees to radians
 
     sigma =  1
@@ -81,24 +85,41 @@ def simulate_3d_dart_throw(angle_x, angle_y,
 
 
 
-def plot_hits_on_dartboard(angle_x,angle_z):
+def plot_hits_on_dartboard(angle_x,angle_y):
 
     hits = []
     for i in range(10):
         # Simulate the 3D dart throw
-        hits.append(simulate_3d_dart_throw(angle_x, angle_z, plot=0))
+        hits.append(simulate_3d_dart_throw(angle_x, angle_y, plot=0))
 
     hits = np.array(hits).squeeze()
+    print('Average distance to bulls eye = {:f} '.format(np.mean(np.square((hits)))))
     plot_dartboard(hits[:,0], hits[:,1])
     plt.savefig('darts.png')
-    print('file saved')
 
+
+def find_optimal_throw_angles():
+    '''
+    Implement your solution here.
+    You can use simulate_3d_dart_throw
+    to test a few  trial angles to get 
+    some data to work with. 
+
+    To goal is to find optimal angles
+    in x and y directions
+    for a throw such that
+    the dart lands close to origin (0,0)
+    '''
+    
+    angle_x = 0 # degrees
+    angle_y = 0  # degrees
+
+    return angle_x, angle_y
 
 if __name__ == "__main__":
 
-    # Input parameters
+    theta_x, theta_y = find_optimal_throw_angles()
 
-    angle_x = 0  # degrees
-    angle_z = 0  # degrees
-
-    plot_hits_on_dartboard(angle_x = 0, angle_z=0)
+    # Dont change the following lines:
+    find_optimal_throw_angles
+    plot_hits_on_dartboard(angle_x = theta_x, angle_y=theta_y)
