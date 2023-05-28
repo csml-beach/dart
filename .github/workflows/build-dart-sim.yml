@@ -4,10 +4,9 @@
 name: Python
 
 on:
-  push:
-    branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -33,6 +32,7 @@ jobs:
     - name: Test 
       run: |
         python dart.py
+        ls .
         
     - name: Pull request artifacts
       uses: gavv/pull-request-artifacts@v1.0.0
@@ -55,5 +55,5 @@ jobs:
 
         # Whitespace-separated list of files to upload
         artifacts: |
-          dart.png
+          darts.png
         

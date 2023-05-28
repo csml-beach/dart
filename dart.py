@@ -90,7 +90,8 @@ def plot_hits_on_dartboard(angle_x,angle_z):
 
     hits = np.array(hits).squeeze()
     plot_dartboard(hits[:,0], hits[:,1])
-    plt.savefig('./darts.png')
+    plt.savefig('darts.png')
+    print('file saved')
 
 
 if __name__ == "__main__":
