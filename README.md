@@ -10,7 +10,7 @@ This guide provides a brief overview of the steps to share your solution for the
 
 
 2. Make changes:
-- Navigate to the cloned repository's directory: `cd <repository-name>`
+- Navigate to the cloned repository's directory: `cd dart`
 - Create a new branch 
 ```git checkout -b my-new-branch```
 - Modify the necessary files using your preferred editor.
