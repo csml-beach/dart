@@ -1,0 +1,59 @@
+# This workflow will install Python dependencies, run tests and lint with a single version of Python
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-python
+
+name: Python
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+permissions:
+  contents: write
+  pull-requests: write
+  
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Python 3.10
+      uses: actions/setup-python@v3
+      with:
+        python-version: "3.10"
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install numpy matplolib
+        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+    - name: Test 
+      run: |
+        python dart.py
+        
+    - name: Pull request artifacts
+      uses: gavv/pull-request-artifacts@v1.0.0
+      with:
+        # Commit hash that triggered PR
+        commit: ${{ github.event.pull_request.head.sha }}
+
+        # Token for current repo (used to post PR comment)
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
+
+
+        # Optional, uncomment to upload artifacts to specific branch, otherwise
+        # the default branch is used.
+        # Note that usually the main branch is protected by rules, so it's not
+        # possible to upload there.
+        # Perhaps, the best solution is to create an empty unprotected branch
+        # dedicated for artifacts.
+        # See README for details.
+        artifacts-branch: artifacts
+
+        # Whitespace-separated list of files to upload
+        artifacts: |
+          dart.png
+        
