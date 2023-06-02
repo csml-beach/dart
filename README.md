@@ -8,7 +8,10 @@
 </table>
 
 ## Components
-
+ The function ``simulate_3d_dart_throw``  in `dart.py` takes two arguments:  ``angle_x`` and `` angle_y`` The function returns the position of the dart when it reaches the board. 
+ 
+Your code should be implemented in 
+  
 
 ## Task
 By analyzing the landing positions of the thrown darts on the plot, create a program that finds/learns throw angles that lead to more centered and accurate  results.
