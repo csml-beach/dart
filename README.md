@@ -1,3 +1,18 @@
+# The Darts Game
+
+<table>
+  <tr>
+    <td><img src="darts.png"/> </td>
+    <td>This program simulates the throwing of darts from a fixed position away from the dartboard. Each throw has random inaccuracies and biases. The goal is to find the optimal throwing angles that compensate for these biases and errors.</td>
+  </tr>
+</table>
+
+## Components
+
+
+## Task
+By analyzing the landing positions of the thrown darts on the plot, create a program that finds/learns throw angles that lead to more centered and accurate  results.
+
 # Contribution Guide
 
 This guide provides a brief overview of the steps to share your solution for the dart problem:
