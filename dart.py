@@ -32,14 +32,15 @@ def simulate_3d_dart_throw(angle_x, angle_y,
                            time_step = 0.01,
                            plot = False):
     '''
-    This function solved the trajectory of the dart. 
-    Use the optional inputs: angle_x and angle_y
-    as scalar and not arrays. You can turn the plot 
-    flag to True to show where a random throw 
-    with the input angles lands. 
+    This function solves the trajectory of the dart. 
+    Use the required inputs: angle_x and angle_y
+    and pass scalar values (not arrays) to the function.   This function returns the position of the dart 
+    where it (approximately) hits the board. 
+    
+    You can set the plot 
+    flag to True to visualize where a random throw 
+    with these input angles would land. 
 
-    the function returns the position of the dart 
-    when it (approximately) reaches the board. 
     '''
     # Convert the angles from degrees to radians
 
@@ -101,15 +102,16 @@ def plot_hits_on_dartboard(angle_x,angle_y):
 def find_optimal_throw_angles():
     '''
     Implement your solution here.
-    You can use simulate_3d_dart_throw
+    You can use the function simulate_3d_dart_throw
     to test a few  trial angles to get 
     some data to work with. 
 
     To goal is to find optimal angles
     in x and y directions
-    for a throw such that
-    the dart lands close to origin (0,0)
-
+    such that the darts land close to  the origin (0,0).
+    
+    Once you have your solution, commit it to a new branch
+    and create a pull request on GitHub.
 
     '''
 
