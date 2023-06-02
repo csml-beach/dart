@@ -32,13 +32,13 @@ def simulate_3d_dart_throw(angle_x, angle_y,
                            time_step = 0.01,
                            plot = False):
     '''
-    This function solved the trajectory of the dart. 
+    This function solves the trajectory of the dart. 
     Use the optional inputs: angle_x and angle_y
-    as scalar and not arrays. You can turn the plot 
+    as scalar and not arrays. You can set the plot 
     flag to True to show where a random throw 
-    with the input angles lands. 
+    with these input angle would land. 
 
-    the function returns the position of the dart 
+    This function returns the position of the dart 
     when it (approximately) reaches the board. 
     '''
     # Convert the angles from degrees to radians
