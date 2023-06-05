@@ -17,11 +17,9 @@ By analyzing the landing positions of the thrown darts on the plot, create a pro
 Use the template function ``find_optimal_throw_angles`` to impelment your code.   You can use the function `simulate_3d_dart_throw` to test a few trial angles to get some data to work with.  The goal is to find optimal angles in x and y directions such that the dart lands close to origin `(0,0)`.
   
 
-# Contribution Guide
+## Steps to Contribute
 
 This guide provides a brief overview of the steps to share your solution for the dart problem:
-
-## Steps to Contribute
 
 1. Clone the repository: `git clone https://github.com/elswit/dart.git `
 
