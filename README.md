@@ -1,4 +1,4 @@
-# The Darts Game
+# The Dart Game
 
 <table>
   <tr>
