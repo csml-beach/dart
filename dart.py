@@ -91,7 +91,8 @@ def plot_hits_on_dartboard(angle_x, angle_y):
         hits.append(simulate_3d_dart_throw(angle_x, angle_y, plot=False))
 
     hits = np.array(hits).squeeze()
-    print('optimal_theta_x =', round(angle_x, 2), 'optimal_theta_y =', round(angle_y, 2))
+    print('Optimal_theta_x =', round(angle_x, 2),'°')
+    print('Optimal_theta_y =', round(angle_y, 2),'°')
     print('Average distance to bulls eye = {:f} '.format(np.mean(np.square(hits))))
     plot_dartboard(hits[:, 0], hits[:, 1])
     plt.savefig('darts.png')
