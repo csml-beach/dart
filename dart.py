@@ -48,8 +48,8 @@ def simulate_3d_dart_throw(angle_x, angle_y,
     angle_x += sigma * np.random.randn(1)
     angle_y += sigma * np.random.randn(1)
 
-    angle_x = math.radians(angle_x)
-    angle_y = math.radians(angle_y)
+    angle_x = np.radians(angle_x)
+    angle_y = np.radians(angle_y)
 
     # Initialize lists to store the position of the dart at each time step
     x_positions = [initial_position[0]]
@@ -57,9 +57,9 @@ def simulate_3d_dart_throw(angle_x, angle_y,
     z_positions = [initial_position[2]]
 
     # Calculate the initial velocity components
-    initial_velocity_x = initial_velocity * math.cos(angle_x) * math.cos(angle_y)
-    initial_velocity_y = initial_velocity * math.sin(angle_x) * math.cos(angle_y)
-    initial_velocity_z = initial_velocity * math.sin(angle_y)
+    initial_velocity_x = initial_velocity * np.cos(angle_x) * np.cos(angle_y)
+    initial_velocity_y = initial_velocity * np.sin(angle_x) * np.cos(angle_y)
+    initial_velocity_z = initial_velocity * np.sin(angle_y)
 
     # Simulate the dart throw until it hits the ground (z position becomes negative)
     while x_positions[-1] <= 5:
@@ -91,6 +91,7 @@ def plot_hits_on_dartboard(angle_x, angle_y):
         hits.append(simulate_3d_dart_throw(angle_x, angle_y, plot=False))
 
     hits = np.array(hits).squeeze()
+    print('optimal_theta_x =', round(angle_x, 2), 'optimal_theta_y =', round(angle_y, 2))
     print('Average distance to bulls eye = {:f} '.format(np.mean(np.square(hits))))
     plot_dartboard(hits[:, 0], hits[:, 1])
     plt.savefig('darts.png')
