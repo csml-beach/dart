@@ -1,36 +1,33 @@
-
 import math
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.patches import Wedge
 
 
-def plot_dartboard(x,y):
-
-    colors = ['black','red']*10
-    patches= []
-
+def plot_dartboard(x, y):
+    colors = ['black', 'red'] * 10
+    patches = []
 
     # Define the radii for the bands
-    radii = [ 0.1, 0.2, 0.35, 0.55, 0.80, 1.0]
+    radii = [0.1, 0.2, 0.35, 0.55, 0.80, 1.0]
 
     # Plot the bands of colors
-    for i in range(len(radii)-1):
+    for i in range(len(radii) - 1):
         color = colors[i]
 
-        wedge = Wedge((0, 0), radii[i+1], 0, 360, width=radii[i+1]-radii[i], facecolor=color)
+        wedge = Wedge((0, 0), radii[i + 1], 0, 360, width=radii[i + 1] - radii[i], facecolor=color)
         plt.gca().add_patch(wedge)
-        
-    plt.scatter(x,y, marker = '+', s=100, c='w')
+
+    plt.scatter(x, y, marker='+', s=100, c='w')
     plt.axis('scaled')
     plt.gca().set_facecolor("grey")
 
 
 def simulate_3d_dart_throw(angle_x, angle_y,
                            initial_position=None,
-                           initial_velocity = 15.0,
-                           time_step = 0.01,
-                           plot = False):
+                           initial_velocity=15.0,
+                           time_step=0.01,
+                           plot=False):
     '''
     This function solves the trajectory of the dart. 
     Use the required inputs: angle_x and angle_y
@@ -46,13 +43,13 @@ def simulate_3d_dart_throw(angle_x, angle_y,
 
     if initial_position is None:
         initial_position = [0, 0, 0]
-    sigma =  1
+    sigma = 1
 
-    angle_x +=  sigma*np.random.randn(1) 
-    angle_y +=  sigma*np.random.randn(1) 
+    angle_x += sigma * np.random.randn(1)
+    angle_y += sigma * np.random.randn(1)
 
-    angle_x = math.radians(angle_x )
-    angle_y = math.radians(angle_y )
+    angle_x = math.radians(angle_x)
+    angle_y = math.radians(angle_y)
 
     # Initialize lists to store the position of the dart at each time step
     x_positions = [initial_position[0]]
@@ -65,7 +62,7 @@ def simulate_3d_dart_throw(angle_x, angle_y,
     initial_velocity_z = initial_velocity * math.sin(angle_y)
 
     # Simulate the dart throw until it hits the ground (z position becomes negative)
-    while x_positions[-1]  <= 5:
+    while x_positions[-1] <= 5:
         # Calculate the new position and velocity
         new_x = x_positions[-1] + initial_velocity_x * time_step
         new_y = y_positions[-1] + initial_velocity_y * time_step
@@ -82,22 +79,20 @@ def simulate_3d_dart_throw(angle_x, angle_y,
         initial_velocity_y = new_velocity_y
         initial_velocity_z = new_velocity_z
 
-    if plot: plot_dartboard(y_positions[-1],z_positions[-1])
+    if plot: plot_dartboard(y_positions[-1], z_positions[-1])
 
-    return np.reshape(np.array([y_positions[-1], z_positions[-1]]), [-1,2])
+    return np.reshape(np.array([y_positions[-1], z_positions[-1]]), [-1, 2])
 
 
-
-def plot_hits_on_dartboard(angle_x,angle_y):
-
+def plot_hits_on_dartboard(angle_x, angle_y):
     hits = []
     for i in range(10):
         # Simulate the 3D dart throw
-        hits.append(simulate_3d_dart_throw(angle_x, angle_y, plot=0))
+        hits.append(simulate_3d_dart_throw(angle_x, angle_y, plot=False))
 
     hits = np.array(hits).squeeze()
-    print('Average distance to bulls eye = {:f} '.format(np.mean(np.square((hits)))))
-    plot_dartboard(hits[:,0], hits[:,1])
+    print('Average distance to bulls eye = {:f} '.format(np.mean(np.square(hits))))
+    plot_dartboard(hits[:, 0], hits[:, 1])
     plt.savefig('darts.png')
 
 
@@ -145,7 +140,6 @@ def find_optimal_throw_angles():
 
 
 if __name__ == "__main__":
-
-    # Dont change the following lines:
+    # Don't change the following lines:
     theta_x, theta_y = find_optimal_throw_angles()
-    plot_hits_on_dartboard(angle_x = theta_x, angle_y=theta_y)
+    plot_hits_on_dartboard(angle_x=theta_x, angle_y=theta_y)
