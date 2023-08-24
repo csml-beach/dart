@@ -146,8 +146,6 @@ def find_optimal_throw_angles():
 
 if __name__ == "__main__":
 
-    theta_x, theta_y = find_optimal_throw_angles()
-
     # Dont change the following lines:
     theta_x, theta_y = find_optimal_throw_angles()
     plot_hits_on_dartboard(angle_x = theta_x, angle_y=theta_y)
