@@ -27,7 +27,7 @@ def plot_dartboard(x,y):
 
 
 def simulate_3d_dart_throw(angle_x, angle_y,
-                           initial_position = [0,0,0],
+                           initial_position=None,
                            initial_velocity = 15.0,
                            time_step = 0.01,
                            plot = False):
@@ -44,6 +44,8 @@ def simulate_3d_dart_throw(angle_x, angle_y,
     '''
     # Convert the angles from degrees to radians
 
+    if initial_position is None:
+        initial_position = [0, 0, 0]
     sigma =  1
 
     angle_x +=  sigma*np.random.randn(1) 
