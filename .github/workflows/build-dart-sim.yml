@@ -43,17 +43,6 @@ jobs:
         # Token for current repo (used to post PR comment)
         repo-token: ${{ secrets.GITHUB_TOKEN }}
 
-
-        # Optional, uncomment to upload artifacts to specific branch, otherwise
-        # the default branch is used.
-        # Note that usually the main branch is protected by rules, so it's not
-        # possible to upload there.
-        # Perhaps, the best solution is to create an empty unprotected branch
-        # dedicated for artifacts.
-        # See README for details.
-        artifacts-branch: artifacts
-
         # Whitespace-separated list of files to upload
-        artifacts: |
-          darts.png
+        artifacts: darts.png
         
