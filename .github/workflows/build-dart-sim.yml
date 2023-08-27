@@ -11,10 +11,9 @@ jobs:
     permissions:
       contents: write
       pull-requests: write
-
     steps:
-      - uses: actions/checkout@v3
       - name: Set up Python 3.10
+        uses: actions/checkout@v3
       - uses: actions/setup-python@v3
         with:
           python-version: "3.10"
@@ -32,10 +31,6 @@ jobs:
         uses: gavv/pull-request-artifacts@v1.0.0
         with:
           commit: ${{ github.event.pull_request.head.sha }}
-  
-        # Token for current repo (used to post PR comment)
           repo-token: ${{ secrets.GITHUB_TOKEN }}
-  
-        # Whitespace-separated list of files to upload
           artifacts: darts.png
         
