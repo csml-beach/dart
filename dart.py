@@ -113,30 +113,9 @@ def find_optimal_throw_angles():
     and create a pull request on GitHub.
 
     '''
-    # Testing the angles from -15 to 15, this can be changed
-    x_range = np.linspace(-15, 15, 15)
-    y_range = np.linspace(-15, 15, 15)
-
-    optimal_distance = float('inf')
     optimal_theta_x = 0
     optimal_theta_y = 0
 
-    # loop over all the combinations of x & y and hit the board
-    for x in x_range:
-        for y in y_range:
-            hits = []
-            for hit in range(10):
-                hits.append(simulate_3d_dart_throw(x, y, plot=False))
-
-            hits = np.squeeze(np.array(hits))
-            squared_distances = np.square(hits)
-            avg_squared_distance = np.mean(squared_distances)
-
-            # find the best x & y angles from optimal distance
-            if avg_squared_distance < optimal_distance:
-                optimal_distance = avg_squared_distance
-                optimal_theta_x = x
-                optimal_theta_y = y
 
     return optimal_theta_x, optimal_theta_y
 
