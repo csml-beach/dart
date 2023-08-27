@@ -1,8 +1,5 @@
-# This workflow will install Python dependencies, run tests and lint with a single version of Python
-# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-python
 
 name: Build
-
 on:
   pull_request:
     branches: [ "main" ]
@@ -10,37 +7,35 @@ on:
   
 jobs:
   build:
-  permissions:
-    contents: write
-    pull-requests: write
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
 
-  runs-on: ubuntu-latest
-
-  steps:
-    - uses: actions/checkout@v3
-    - name: Set up Python 3.10
-      uses: actions/setup-python@v3
-      with:
-        python-version: "3.10"
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install numpy matplotlib
-        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-    - name: Test 
-      run: |
-        python dart.py
-        ls .
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python 3.10
+      - uses: actions/setup-python@v3
+        with:
+          python-version: "3.10"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install numpy matplotlib
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+      - name: Test 
+        run: |
+          python dart.py
+          ls .
         
-    - name: Pull request artifacts
-      uses: gavv/pull-request-artifacts@v1.0.0
-      with:
-        # Commit hash that triggered PR
-        commit: ${{ github.event.pull_request.head.sha }}
+      - name: Pull request artifacts
+        uses: gavv/pull-request-artifacts@v1.0.0
+        with:
+          commit: ${{ github.event.pull_request.head.sha }}
   
         # Token for current repo (used to post PR comment)
-        repo-token: ${{ secrets.GITHUB_TOKEN }}
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
   
         # Whitespace-separated list of files to upload
-        artifacts: darts.png
+          artifacts: darts.png
         
