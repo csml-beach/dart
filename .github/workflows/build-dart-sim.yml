@@ -1,24 +1,22 @@
 # This workflow will install Python dependencies, run tests and lint with a single version of Python
 # For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-python
 
-name: Python
+name: Build
 
 on:
   pull_request:
     branches: [ "main" ]
   workflow_dispatch:
-
-permissions:
-  contents: write
-  pull-requests: write
   
-
 jobs:
   build:
+  permissions:
+    contents: write
+    pull-requests: write
 
-    runs-on: ubuntu-latest
+  runs-on: ubuntu-latest
 
-    steps:
+  steps:
     - uses: actions/checkout@v3
     - name: Set up Python 3.10
       uses: actions/setup-python@v3
@@ -39,10 +37,10 @@ jobs:
       with:
         # Commit hash that triggered PR
         commit: ${{ github.event.pull_request.head.sha }}
-
+  
         # Token for current repo (used to post PR comment)
         repo-token: ${{ secrets.GITHUB_TOKEN }}
-
+  
         # Whitespace-separated list of files to upload
         artifacts: darts.png
         
